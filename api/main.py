@@ -8,11 +8,15 @@ print("NEWS_API_KEY loaded:", bool(os.getenv("NEWS_API_KEY")))
 app = FastAPI(
     title="Fin_AgenticRAG",
     description="Financial Multi-Agent RAG System",
-    version="1.0.0"
+    version="1.0.0", 
+    docs_url="/docs",
+    redoc_url="/redoc"
 )
 
 app.include_router(query_router, prefix = "/api")
 
-@app.get("/health")
+@app.get("/")
 def health_check():
-    return {"status":"ok"}
+    return {
+        "status":"ok",
+        "service": "Financial Agentic RAG"}
